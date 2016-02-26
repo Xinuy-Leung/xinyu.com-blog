@@ -1,8 +1,12 @@
 var express = require('express')
 var path =require('path')
+var mongoose = require('mongoose')
+var Movie = require('./models/movie')
 var bodyParser = require('body-parser')
 var port = process.env.PORT || 3000
 var app = express()
+
+mongoose.connect('mongodb://localhost/xinyu')
 
 app.set('views', './views/pages/')
 app.set('view engine', 'jade')
@@ -10,9 +14,18 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname,'bower_components')))
 app.listen(port)
 
-
 console.log('Xinyu is listening on port ' + port);
 
+var newMovie =  new Movie({
+    director: 'xinyu',
+    title: '与沙漠的五百天',
+    language: '中文',
+    country: '美国'
+})
+newMovie.save(function(err) {
+  if (err) handleError(err);
+  console.log('Success');
+});
 //index page
 app.get('/', function(req, res) {
     res.render('index', {

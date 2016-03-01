@@ -1,0 +1,12 @@
+doctype
+html
+	head
+		meta(charset="utf-8")
+		title #{title}
+		link(rel='stylesheet',type='text/css',href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css')
+		script(src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js')
+	body
+		h1 #{title}
+		div !{md_content}
+		script
+			hljs.initHighlightingOnLoad()

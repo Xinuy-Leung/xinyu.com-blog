@@ -1,28 +1,39 @@
 @import 'compass/reset';
 @import 'compass/css3';
-body{
-	font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+body {
+    font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+    @include display-flex(flex);
+    @include flex-direction(column);
+    min-height: 100vh;
 }
+
 $common_width:1000px;
 .header-container {
     width: 100%;
     height: 80px;
     .header {
-        width: 1000px;
+        width: $common_width;
         margin: 0 auto;
         position: relative;
         @include display-flex(flex);
         @include justify-content(flex-end);
         .flex-item {
             margin: 0 20px;
-            line-height: 80px;
+            line-height: 95px;
+            color: #A0969E;
+            cursor: pointer;
+            @include transition(all 0.3s);
+            &:hover,
+            &.now {
+                color: #000;
+            }
         }
         .flex-logo {
             img {
                 width: 99px;
                 height: 63px;
                 position: absolute;
-                top:7px;
+                top: 7px;
                 left: 40px;
             }
         }

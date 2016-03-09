@@ -8,11 +8,20 @@
     "bower": "^1.7.7",
     "express": "^4.13.4",
     "jade": "^1.11.0",
+    "livereload": "^0.4.1",
     "markdown": "^0.5.0",
     "mongoose": "^4.4.5",
     "nodemon": "^1.9.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-compass": "^2.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-sass": "^2.2.0",
+    "gulp-watch": "^4.3.5"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

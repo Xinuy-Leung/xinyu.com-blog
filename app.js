@@ -7,16 +7,18 @@ var app = express()
 var livereload = require('livereload').createServer({
     exts: ['jade','css']
 })
-livereload.watch(__dirname + '/public/css')
-livereload.watch(__dirname + '/app/views')
+livereload.watch(path.join(__dirname , '/public/css'))
+livereload.watch(path.join(__dirname , '/app/views'))
 
 mongoose.connect('mongodb://localhost/blog')
 
-app.set('views', './app/views/pages/')
+app.set('views', path.join(__dirname , 'app/views/pages/'))
 app.set('view engine', 'jade')
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.static('public'))
 app.listen(port)
+
+app.locals.moment = require('moment')
 
 require('./config/routes')(app)
 

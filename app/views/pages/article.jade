@@ -1,0 +1,24 @@
+extends ../layout
+
+block headFile
+	link(rel='stylesheet',type='text/css',href='/css/article.css')
+
+block content
+	main.main
+		article.article-item
+			.article-container
+				h1.post-title #{item.title}
+				div.post-meta 
+					span.post-time Posted in 
+						a(href='/',targer='_blank') #{item.meta.createAt}
+					span.post-category &nbsp | &nbsp Signed to 
+						a(href='/',targer='_blank') #{item.category}
+					span.tags 
+					each it in item.tags
+						a(href='/',targer='_blank') #{it}
+				div.post-body
+					p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
+					p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
+					p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
+					p #{item.summary}
+					p #{item.content}

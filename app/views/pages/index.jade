@@ -1,55 +1,28 @@
 extends ../layout
 
 block headFile
-	link(rel='stylesheet',type='text/css',href='css/index.css')
+	link(rel='stylesheet',type='text/css',href='/css/index.css')
 
 block content
 	main.main
-		article.article-item
-			.article-container
-				h1.post-title Liangxinyu frist blog
-				div.post-meta 
-					span.post-time Posted in 
-						a(href='/',targer='_blank') 2016-03-09
-					span.post-category &nbsp | &nbsp Signed to 
-						a(href='/',targer='_blank') My fxxking life
-					span.tags 
-						a(href='/',targer='_blank') 001
-						a(href='/',targer='_blank') 002
-						a(href='/',targer='_blank') 003
-				div.post-body
-					p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
-					p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
-					p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
-		article.article-item
-			.article-container
-				h1.post-title Liangxinyu frist blog
-				div.post-meta 
-					span.post-time Posted in 
-						a(href='/',targer='_blank') 2016-03-09
-					span.post-category &nbsp | &nbsp Signed to 
-						a(href='/',targer='_blank') My fxxking life
-					span.tags 
-						a(href='/',targer='_blank') 001
-						a(href='/',targer='_blank') 002
-						a(href='/',targer='_blank') 003
-				div.post-body
-					p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
-					p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
-					p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
-		article.article-item
-			.article-container
-				h1.post-title Liangxinyu frist blog
-				div.post-meta 
-					span.post-time Posted in 
-						a(href='/',targer='_blank') 2016-03-09
-					span.post-category &nbsp | &nbsp Signed to 
-						a(href='/',targer='_blank') My fxxking life
-					span.tags 
-						a(href='/',targer='_blank') 001
-						a(href='/',targer='_blank') 002
-						a(href='/',targer='_blank') 003
-				div.post-body
-					p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
-					p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
-					p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
+		each item in content
+			article.article-item
+				.article-container
+					a(href='/p/#{item._id}')
+						h1.post-title #{item.title}
+					div.post-meta 
+						span.post-time  发布于 
+							a(href='/',targer='_blank') #{moment(item.meta.createAt).startOf('hour').fromNow()}
+						span.update-time   &nbsp | &nbsp 最后编辑于 
+							a(href='/',targer='_blank') #{moment(item.meta.updateAt).startOf('hour').fromNow()}
+						span.post-category &nbsp | &nbsp Signed to 
+							a(href='/',targer='_blank') #{item.category}
+						span.tags 
+						each it in item.tags
+							a(href='/',targer='_blank') &nbsp  #{it}
+					div.post-body
+						p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
+						p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
+						p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
+						p #{item.summary}
+						p #{item.content}

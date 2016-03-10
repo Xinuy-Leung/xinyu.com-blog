@@ -1,10 +1,9 @@
 var mongoose = require('mongoose')
 var BlogSchema = new mongoose.Schema({
-    aurthor: String,
     title: String,
     summary: String,
     tags: Array,
-    date: { type: Date, default: Date.now() },
+    // date: { type: Date, default: Date.now() },
     meta: {
         createAt: {
             type: Date,
@@ -15,6 +14,7 @@ var BlogSchema = new mongoose.Schema({
             default: Date.now()
         }
     },
+    category:String,
     content: String
 })
 

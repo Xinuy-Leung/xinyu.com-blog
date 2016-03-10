@@ -2,7 +2,20 @@ nav.header-container
 	.header
 		a.flex-logo.flex-item(href="",target="_blank")
 			img(src='/images/xinyu-blog.png')
-		a.flex-item Work
-		a.flex-item About
-		a.flex-item Blog
-		a.flex-item Contact
+		case now
+			when 'Home': a.flex-item.now Home  
+						a.flex-item About
+						a.flex-item Blog
+						a.flex-item Contact
+			when 'About': a.flex-item Home
+						a.flex-item.now About
+						a.flex-item Blog
+						a.flex-item Contact
+			when 'Blog': a.flex-item Home
+						a.flex-item About
+						a.flex-item.now  Blog
+						a.flex-item Contact
+			when 'Contact': a.flex-item Home
+						a.flex-item About
+						a.flex-item Blog
+						a.flex-item.now  Contact

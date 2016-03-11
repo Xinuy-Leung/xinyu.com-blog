@@ -1,14 +1,19 @@
 extends ../layout
 
 block headFile
-	link(rel='stylesheet',type='text/css',href='/css/article.css')
+	link(rel='stylesheet',type='text/css',href='/css/admin.css')
+	script(src='/js/admin.js')
 
 block content
 	main.main
+		each item in content
 			article.article-item
 				.article-container
 					a(href='/p/#{item._id}')
 						h1.post-title #{item.title}
+						&nbsp   &nbsp 
+						a.operation.edit(data-id='#{item._id}',href='/xinyu/blog/update/#{item._id}') 编辑
+						a.operation.del(data-id='#{item._id}') &nbsp | &nbsp 删除
 					div.post-meta 
 						span.post-time  发布于 
 							a(href='/',targer='_blank') #{moment(item.meta.createAt).startOf('minute').fromNow()}

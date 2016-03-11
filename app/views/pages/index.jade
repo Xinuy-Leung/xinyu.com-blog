@@ -12,17 +12,14 @@ block content
 						h1.post-title #{item.title}
 					div.post-meta 
 						span.post-time  发布于 
-							a(href='/',targer='_blank') #{moment(item.meta.createAt).startOf('hour').fromNow()}
+							a(href='/',targer='_blank') #{moment(item.meta.createAt).startOf('minute').fromNow()}
 						span.update-time   &nbsp | &nbsp 最后编辑于 
-							a(href='/',targer='_blank') #{moment(item.meta.updateAt).startOf('hour').fromNow()}
-						span.post-category &nbsp | &nbsp Signed to 
+							a(href='/',targer='_blank') #{moment(item.meta.updateAt).startOf('minute').fromNow()}
+						span.post-category &nbsp | &nbsp 归类于
 							a(href='/',targer='_blank') #{item.category}
-						span.tags 
-						each it in item.tags
-							a(href='/',targer='_blank') &nbsp  #{it}
+						span.tags  &nbsp | &nbsp 标签:
+							each it in item.tags 
+								a(href='/',targer='_blank') &nbsp  #{it}
 					div.post-body
-						p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
-						p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
-						p 2016 前端技术提升点（如果继续从事的话，希望能够将重点放在下面的事情上）：
 						p #{item.summary}
 						p #{item.content}

@@ -3,7 +3,6 @@ var BlogSchema = new mongoose.Schema({
     title: String,
     summary: String,
     tags: Array,
-    // date: { type: Date, default: Date.now() },
     meta: {
         createAt: {
             type: Date,

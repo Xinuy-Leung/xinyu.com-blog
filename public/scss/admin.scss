@@ -1,0 +1,40 @@
+@import './components/header';
+@import './components/footer';
+.main {
+    flex: 1;
+    .article-item {
+        &:last-child {
+            padding-bottom: 25px;
+        }
+        .article-container {
+            width: $common_width;
+            margin: 25px auto 0;
+            box-sizing: border-box;
+            padding-left: 40px;
+            .post-title {
+                font-size: 25px;
+                line-height: 45px;
+            }
+            .post-operation{
+                font-size: 16px;
+                line-height: 25px;
+                text-decoration: none;
+            }
+            .post-meta {
+                span {
+                    font-size: 16px;
+                    line-height: 25px;
+                    a {
+                        text-decoration: none;
+                    }
+                }
+            }
+            .post-body {
+                p {
+                    line-height: 35px;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

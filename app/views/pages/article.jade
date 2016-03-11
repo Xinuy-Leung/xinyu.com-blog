@@ -2,6 +2,11 @@ extends ../layout
 
 block headFile
 	link(rel='stylesheet',type='text/css',href='/css/article.css')
+	link(rel='stylesheet',type='text/css',href='//cdn.bootcss.com/highlight.js/9.2.0/styles/agate.min.css')
+	script(src='//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js')
+	script.
+		hljs.initHighlightingOnLoad();
+
 
 block content
 	main.main
@@ -21,4 +26,4 @@ block content
 								a(href='/',targer='_blank') &nbsp  #{it}
 					div.post-body
 						p #{item.summary}
-						p #{item.content}
+						#{md.toHTML(item.content)}

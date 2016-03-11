@@ -5,9 +5,10 @@ var fs = require('fs')
 var mongoose = require('mongoose')
 var markdown = require('markdown').markdown
 
-
 module.exports = function(app) {
-    // user
+    app.locals.md = markdown
+    app.locals.moment = require('moment')
+        // user
     app.get('/', User.index)
     app.get('/p/:articleId', User.getOneBlog)
 

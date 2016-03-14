@@ -67,3 +67,28 @@ exports.signUp = function(req, res) {
     })
     res.redirect('/signup')
 }
+exports.logIn = function(req, res) {
+    var _name = req.body.user.name
+    var _password = req.body.user.password
+    User.findOne({ 'name': _name }, function(err, userObj) {
+        if (err) {
+            console.log(err);
+        }
+        if (!userObj) {
+            console.log('NO admin');
+            return res.redirect('/signup')
+        }
+        userObj.comparePassword(_password, function(err, isMatch) {
+            if (err) {
+                console.log(err);
+            }
+            if (isMatch) {
+                console.log('password is matched');
+                res.redirect('/')
+            } else {
+                console.log('password is not matched');
+                res.redirect('/login')
+            }
+        })
+    })
+}

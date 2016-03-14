@@ -15,7 +15,7 @@ module.exports = function(app) {
     app.get('/signup', User.signUpPage)
     app.get('/login', User.logInPage)
     app.post('/signup', User.signUp)
-    // app.post('/login', User.logIn)
+    app.post('/login', User.logIn)
 
     // admin
     app.get('/xinyu/', Admin.List);

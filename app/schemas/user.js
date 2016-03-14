@@ -29,17 +29,25 @@ UserSchema.pre('save', function(next) {
         this.meta.updateAt = Date.now()
     }
     bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
-        if (err) return next(err)
-        bcrypt.hash(user.password, salt, function(err, hash) {
             if (err) return next(err)
-            user.password = hash
-            next()
+            bcrypt.hash(user.password, salt, function(err, hash) {
+                if (err) return next(err)
+                user.password = hash
+                next()
+            })
         })
-    })
-    //that is the point
-    // next()
+        //that is the point
+        // next()
 })
+UserSchema.methods = {
+    comparePassword: function(password, cb) {
+        bcrypt.compare(password, this.password, function(err, isMatch) {
+            if (err) return cb(err)
 
+            cb(null, isMatch)
+        })
+    }
+}
 UserSchema.statics = {
     fetch: function(cb) {
         return this

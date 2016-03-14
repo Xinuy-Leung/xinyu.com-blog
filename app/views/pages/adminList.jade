@@ -11,7 +11,7 @@ block content
 				.container
 					.row
 						.page-header
-							h1 Admin Index Page
+							h2 Admin Index Page
 							table.table.table-hover.tabler-bordered
 								thead
 									tr
@@ -35,3 +35,5 @@ block content
 													td: a(target='_blank',href='/xinyu/blog/update/#{item._id}') 修改
 													td
 														button.btn.btn-danger.del(type='button',data-id='#{item._id}') 删除
+							p 
+								a(href='/xinyu/blog/create',target='_blank',class='btn btn-default',role='button') 新建

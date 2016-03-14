@@ -13,6 +13,7 @@ exports.index = function(req, res) {
         //         //     title: 'index-page'
         //         // })
         // });
+        console.log(req.session.user);
         Blog.find({}, function(err, allArticle) {
             if (err) {
                 console.log('Error happens');
@@ -49,7 +50,6 @@ exports.getTag = function(req, res) {
                 })
             })
         }
-
     }
     // join page
 exports.signUpPage = function(req, res) {
@@ -68,27 +68,31 @@ exports.signUp = function(req, res) {
     res.redirect('/signup')
 }
 exports.logIn = function(req, res) {
-    var _name = req.body.user.name
-    var _password = req.body.user.password
-    User.findOne({ 'name': _name }, function(err, userObj) {
-        if (err) {
-            console.log(err);
-        }
-        if (!userObj) {
-            console.log('NO admin');
-            return res.redirect('/signup')
-        }
-        userObj.comparePassword(_password, function(err, isMatch) {
+        var _name = req.body.user.name
+        var _password = req.body.user.password
+        User.findOne({ 'name': _name }, function(err, userObj) {
             if (err) {
                 console.log(err);
             }
-            if (isMatch) {
-                console.log('password is matched');
-                res.redirect('/')
-            } else {
-                console.log('password is not matched');
-                res.redirect('/login')
+            if (!userObj) {
+                console.log('NO admin');
+                return res.redirect('/signup')
             }
+            userObj.comparePassword(_password, function(err, isMatch) {
+                if (err) {
+                    console.log(err);
+                }
+                if (isMatch) {
+                    req.session.user = userObj
+                    console.log('password is matched');
+                    res.redirect('/')
+                } else {
+                    console.log('password is not matched');
+                    res.redirect('/login')
+                }
+            })
         })
-    })
-}
+    }
+    // exports.adminRequired=function(req,res,next){
+    //     var 
+    // }

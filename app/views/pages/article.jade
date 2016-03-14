@@ -3,14 +3,13 @@ include ../includes/util
 
 block headFile
 	link(rel='stylesheet',type='text/css',href='/css/article.css')
-		link(rel='stylesheet',type='text/css',href='//cdn.bootcss.com/highlight.js/9.2.0/styles/atelier-dune-light.min.css')
-			script(src='//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js')
-				script.
-					hljs.initHighlightingOnLoad();
+	link(rel='stylesheet',type='text/css',href='//cdn.bootcss.com/highlight.js/9.2.0/styles/atelier-dune-light.min.css')
+	script(src='//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js')
+	script.
+		hljs.initHighlightingOnLoad();
 					
 block content
 	main.main
 		.main-container
 			.page-header
-				h1 Admin Index Page
 				+articlePost(item)

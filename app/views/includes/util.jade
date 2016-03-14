@@ -1,0 +1,57 @@
+mixin post(item)
+	article.article-item
+		.article-container
+			a(href='/p/#{item._id}')
+				h1.post-title #{item.title}
+			div.post-meta 
+				span.post-time  发布于 
+					a(href='/',targer='_blank') #{moment(item.meta.createAt).startOf('minute').fromNow()}
+				span.update-time   &nbsp | &nbsp 最后编辑于 
+					a(href='/',targer='_blank') #{moment(item.meta.updateAt).startOf('minute').fromNow()}
+				span.post-category &nbsp | &nbsp 归类于
+					a(href='/',targer='_blank') #{item.category}
+				span.tags  &nbsp | &nbsp 标签:
+					each it in item.tags 
+						a(href='/tag/#{it}',targer='_blank') &nbsp  #{it}
+			div.post-body
+				p #{item.summary}
+
+mixin adminPost(item)
+	article.article-item
+		.article-container
+			a(href='/p/#{item._id}')
+				h1.post-title #{item.title} &nbsp &nbsp 
+			a.operation.edit(data-id='#{item._id}',href='/xinyu/blog/update/#{item._id}') 编辑
+			a.operation.del(data-id='#{item._id}') &nbsp | &nbsp 删除
+			div.post-meta 
+				span.post-time  发布于 
+					a(href='/',targer='_blank') #{moment(item.meta.createAt).startOf('minute').fromNow()}
+				span.update-time   &nbsp | &nbsp 最后编辑于 
+					a(href='/',targer='_blank') #{moment(item.meta.updateAt).startOf('minute').fromNow()}
+				span.post-category &nbsp | &nbsp 归类于
+					a(href='/',targer='_blank') #{item.category}
+				span.tags  &nbsp | &nbsp 标签:
+					each it in item.tags 
+						a(href='/tag/#{it}',targer='_blank') &nbsp  #{it}
+			div.post-body
+				p #{item.summary}
+
+
+mixin articlePost(item)
+	article.article-item
+		.article-container
+			a(href='/p/#{item._id}')
+				h1.post-title #{item.title}
+			div.post-meta 
+				span.post-time  发布于 
+					a(href='/',targer='_blank') #{moment(item.meta.createAt).startOf('minute').fromNow()}
+				span.update-time   &nbsp | &nbsp 最后编辑于 
+					a(href='/',targer='_blank') #{moment(item.meta.updateAt).startOf('minute').fromNow()}
+				span.post-category &nbsp | &nbsp 归类于
+					a(href='/',targer='_blank') #{item.category}
+				span.tags  &nbsp | &nbsp 标签:
+					each it in item.tags 
+						a(href='/tag/#{it}',targer='_blank') &nbsp  #{it}
+			div.post-body
+				p #{item.summary}
+				.post-body !{marked(item.content)}

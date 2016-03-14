@@ -1,0 +1,41 @@
+.main {
+    flex: 1;
+    .main-container {
+        width: $common_width;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding-left: 40px;
+        .article-item {
+            margin-top: 25px;
+            &:last-child {
+                padding-bottom: 25px;
+            }
+            .article-container {
+                .post-title {
+                    font-size: 25px;
+                    line-height: 45px;
+                }
+                .post-operation {
+                    font-size: 16px;
+                    line-height: 25px;
+                    text-decoration: none;
+                }
+                .post-meta {
+                    span {
+                        font-size: 16px;
+                        line-height: 25px;
+                        a {
+                            text-decoration: none;
+                        }
+                    }
+                }
+                .post-body {
+                    p {
+                        line-height: 35px;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}

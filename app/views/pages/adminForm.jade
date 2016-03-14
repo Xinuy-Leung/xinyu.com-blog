@@ -1,0 +1,38 @@
+extends ../layout
+
+block headFile
+	link(href='//cdn.bootcss.com/bootstrap/4.0.0-alpha.2/css/bootstrap.css',rel='stylesheet')
+	link(rel='stylesheet',type='text/css',href='/css/admin.css')
+
+
+block content
+	main.main
+		.main-container
+			.container
+				.row
+				form.form-horizontal(method='post',action='/xinyu/blog/create')
+					input(type='hidden',name='blog[_id]',value='#{blog._id}')
+					.form-group
+						label.col-sm-3.control-label(for='inputTitle') Title 
+						.col-sm-9
+							input#inputTitle.form-control(type='text', placeholder='Title',name='blog[title]',value='#{blog.title}')
+					.form-group
+						label.col-sm-3.control-label(for='inputTags') Tags
+						.col-sm-9
+							input#inputTags.form-control(type='text', placeholder='Tags',name='blog[tags]',value="#{blog.tags.join('-')}")
+					.form-group
+						label.col-sm-3.control-label(for='inputSummary') Summary
+						.col-sm-9
+							input#inputSummary.form-control(type='text', placeholder='Summary',name='blog[summary]',value='#{blog.summary}')
+					.form-group
+						label.col-sm-3.control-label(for='inputCategory') Category
+						.col-sm-9
+							input#inputCategory.form-control(type='text', placeholder='Category',name='blog[category]',value='#{blog.category}')
+					.form-group
+						label.col-sm-3.control-label(for='inputContent') Content
+						.col-sm-9
+							textarea#inputContent.form-control(row='10',placeholder='Content',name='blog[content]',value='#{blog.content}')
+					.form-group
+						.col-sm-3
+						.col-sm-9
+							button.btn.btn-default(type='submit') Confirm identity

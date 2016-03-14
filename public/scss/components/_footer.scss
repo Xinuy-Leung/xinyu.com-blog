@@ -15,16 +15,19 @@
         @include display-flex(flex);
         @include justify-content(space-between);
         h3 {
-            padding: 40px 0 0 40px;
+            font-weight: lighter;
+            padding: 12px 0 0 40px;
             font-size: 22px;
             line-height: 40px;
             color: #000;
+            margin-bottom: 0px;
         }
         p {
             font-size: 19px;
             color: #A0969E;
-            line-height: 40px;
+            line-height: 30px;
             padding-left: 40px;
+            margin-top: 10px;
         }
         a.icon {
             display: inline-block;
@@ -34,7 +37,7 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             color: rgba(60, 51, 58, 0.44);
-            padding: 60px 12px;
+            padding: 60px 12px 0px;
             font-size: 32px;
             cursor: pointer;
             @include transition(all 0.3s);

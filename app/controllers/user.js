@@ -1,4 +1,5 @@
 var Blog = require('../models/blog')
+var User = require('../models/user')
 
 exports.index = function(req, res) {
         // fs.readFile('./md/xinyu.md', 'utf-8', function(err, md_content) {
@@ -12,37 +13,57 @@ exports.index = function(req, res) {
         //         //     title: 'index-page'
         //         // })
         // });
-        Blog.find({}, function(err, content) {
+        Blog.find({}, function(err, allArticle) {
             if (err) {
                 console.log('Error happens');
             }
             res.render('index', {
-                content: content,
+                items: allArticle,
                 now: 'Home'
             });
         })
     }
     // artilce details 
 exports.getOneBlog = function(req, res) {
-        Blog.findById(req.params.articleId, function(err, item) {
-            if (err) {
-                console.log('Error happens');
-            }
-            res.render('article', {
-                item: item,
-                now: 'Blog'
-            });
-        })
+    Blog.findById(req.params.articleId, function(err, articleDoc) {
+        if (err) {
+            console.log('Error happens');
+        }
+        res.render('article', {
+            item: articleDoc,
+            now: 'Blog'
+        });
+    })
+}
+exports.getTag = function(req, res) {
+        var tag = req.params.tag
+        if (tag) {
+            Blog.findByTag(tag, function(err, tagDoc) {
+                if (err) {
+                    console.log('Error happens');
+                }
+                res.render('tag', {
+                    items: tagDoc,
+                    now: 'Blog',
+                    tag: tag
+                })
+            })
+        }
+
     }
     // join page
-exports.join = function(req, res) {
-
+exports.signUpPage = function(req, res) {
+        res.render('signup')
     }
     // login page
-exports.login = function(req, res) {
-
-    }
-    // logout page
-exports.logout = function(req, res) {
-
+exports.logInPage = function(req, res) {
+    res.render('login')
+}
+exports.signUp = function(req, res) {
+    var userObj = req.body.user
+    var _user = new User(userObj)
+    _user.save(function(err, userDoc) {
+        console.log('1');
+    })
+    res.redirect('/signup')
 }

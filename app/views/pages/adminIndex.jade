@@ -1,29 +1,15 @@
 extends ../layout
+include ../includes/util
 
 block headFile
+	link(href='//cdn.bootcss.com/bootstrap/4.0.0-alpha.2/css/bootstrap.css',rel='stylesheet')
 	link(rel='stylesheet',type='text/css',href='/css/admin.css')
 	script(src='/js/admin.js')
 
 block content
 	main.main
-		each item in content
-			article.article-item
-				.article-container
-					a(href='/p/#{item._id}')
-						h1.post-title #{item.title}
-						&nbsp   &nbsp 
-						a.operation.edit(data-id='#{item._id}',href='/xinyu/blog/update/#{item._id}') 编辑
-						a.operation.del(data-id='#{item._id}') &nbsp | &nbsp 删除
-					div.post-meta 
-						span.post-time  发布于 
-							a(href='/',targer='_blank') #{moment(item.meta.createAt).startOf('minute').fromNow()}
-						span.update-time   &nbsp | &nbsp 最后编辑于 
-							a(href='/',targer='_blank') #{moment(item.meta.updateAt).startOf('minute').fromNow()}
-						span.post-category &nbsp | &nbsp 归类于
-							a(href='/',targer='_blank') #{item.category}
-						span.tags  &nbsp | &nbsp 标签:
-							each it in item.tags 
-								a(href='/',targer='_blank') &nbsp  #{it}
-					div.post-body
-						p #{item.summary}
-						p #{item.content}
+		.main-container
+			.page-header
+				h1 Admin Index Page
+			each item in content
+				+adminPost(item)

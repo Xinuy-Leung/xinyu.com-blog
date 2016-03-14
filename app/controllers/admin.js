@@ -1,8 +1,31 @@
 var Blog = require('../models/blog')
 var _ = require('underscore')
 
-exports.create= function(req, res) {
-    res.render('admin', {
+exports.index = function(req, res) {
+    Blog.find({}, function(err, content) {
+        if (err) {
+            console.log(err);
+        }
+        res.render('adminIndex', {
+            content: content,
+            now: ''
+        });
+    })
+}
+
+exports.List = function(req, res) {
+    Blog.find({}, function(err, allArticle) {
+        if (err) {
+            console.log(err);
+        }
+        res.render('adminList', {
+            items: allArticle,
+            now: ''
+        });
+    })
+}
+exports.create = function(req, res) {
+    res.render('adminForm', {
         blog: {
             title: '',
             summary: '',
@@ -21,7 +44,7 @@ exports.update = function(req, res) {
             if (err) {
                 console.log('Error happens');
             }
-            res.render('admin', {
+            res.render('adminForm', {
                 blog: BlogDoc,
             })
         })

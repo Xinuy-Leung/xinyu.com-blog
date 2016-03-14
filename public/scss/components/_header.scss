@@ -1,12 +1,14 @@
-@import 'compass/reset';
+// @import '../includes/normalize';
+@import '../includes/markdown';
 @import 'compass/css3';
+
 body {
-    font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+    // font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
     @include display-flex(flex);
     @include flex-direction(column);
     min-height: 100vh;
 }
-
+ 
 $common_width:1000px;
 .header-container {
     width: 100%;

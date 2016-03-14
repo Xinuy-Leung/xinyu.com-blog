@@ -1,29 +1,16 @@
 extends ../layout
+include ../includes/util
 
 block headFile
 	link(rel='stylesheet',type='text/css',href='/css/article.css')
-	link(rel='stylesheet',type='text/css',href='//cdn.bootcss.com/highlight.js/9.2.0/styles/agate.min.css')
-	script(src='//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js')
-	script.
-		hljs.initHighlightingOnLoad();
-
-
+		link(rel='stylesheet',type='text/css',href='//cdn.bootcss.com/highlight.js/9.2.0/styles/atelier-dune-light.min.css')
+			script(src='//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js')
+				script.
+					hljs.initHighlightingOnLoad();
+					
 block content
 	main.main
-			article.article-item
-				.article-container
-					a(href='/p/#{item._id}')
-						h1.post-title #{item.title}
-					div.post-meta 
-						span.post-time  发布于 
-							a(href='/',targer='_blank') #{moment(item.meta.createAt).startOf('minute').fromNow()}
-						span.update-time   &nbsp | &nbsp 最后编辑于 
-							a(href='/',targer='_blank') #{moment(item.meta.updateAt).startOf('minute').fromNow()}
-						span.post-category &nbsp | &nbsp 归类于
-							a(href='/',targer='_blank') #{item.category}
-						span.tags  &nbsp | &nbsp 标签:
-							each it in item.tags 
-								a(href='/',targer='_blank') &nbsp  #{it}
-					div.post-body
-						p #{item.summary}
-						#{md.toHTML(item.content)}
+		.main-container
+			.page-header
+				h1 Admin Index Page
+				+articlePost(item)

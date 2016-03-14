@@ -1,0 +1,37 @@
+extends ../layout
+//- include ../includes/util
+
+block headFile
+	link(href='//cdn.bootcss.com/bootstrap/4.0.0-alpha.2/css/bootstrap.css',rel='stylesheet')
+	link(rel='stylesheet',type='text/css',href='/css/admin.css')
+
+block content
+	main.main
+		.main-container
+				.container
+					.row
+						.page-header
+							h1 Admin Index Page
+							table.table.table-hover.tabler-bordered
+								thead
+									tr
+										th 文章名字
+										th 发布时间 
+										th 最后编辑时间
+										th 标签
+										th 目录
+										th 查看
+										th 更新
+										th 删除
+										tbody
+											each item in items
+												tr(class='item-id-#{item._id}')
+													td #{item.title}
+													td #{moment(item.meta.createAt).format('MM/DD/YYYY')}
+													td #{moment(item.meta.updateAt).format('MM/DD/YYYY')}
+													td #{item.tags.join('  ')}
+													td #{item.category}
+													td: a(target='_blank',href='/p/#{item._id}') 查看
+													td: a(target='_blank',href='/xinyu/blog/update/#{item._id}') 修改
+													td
+														button.btn.btn-danger.del(type='button',data-id='#{item._id}') 删除

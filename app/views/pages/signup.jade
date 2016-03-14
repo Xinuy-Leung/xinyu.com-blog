@@ -1,0 +1,24 @@
+extends ../layout
+
+block headFile
+	link(href='//cdn.bootcss.com/bootstrap/4.0.0-alpha.2/css/bootstrap.css',rel='stylesheet')
+	link(rel='stylesheet',type='text/css',href='/css/admin.css')
+
+block content 
+	main.main
+		.main-container
+			.container
+				.row
+					.col-md-5
+						.page-header
+							h1 Sign up
+						form(method='POST',action='/signup')
+							.modal-body
+								.form-group
+									label(for='signupName') Admin Name
+									input#signupName.form-control(name='user[name]',type='text')
+								.form-group
+									label(for='loginPassword') Login Password
+									input#loginPassword.form-control(name='user[password]',type='password')
+							.modal-footer
+								button.btn.btn-success(type='submit') Submit

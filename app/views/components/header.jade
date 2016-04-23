@@ -1,21 +1,33 @@
 nav.header-container
 	.header
-		a.flex-logo.flex-item(href="",target="_blank")
+		a.flex-logo(href="",target="_blank")
 			img(src='/images/xinyu-blog.png')
-		case now
-			when 'Home': a.flex-item.now Home  
-						a.flex-item About
-						a.flex-item Blog
-						a.flex-item Contact
-			when 'About': a(href='/',targer='_blank').flex-item Home
-						a.flex-item.now About
-						a.flex-item Blog
-						a.flex-item Contact
-			when 'Blog': a(href='/',targer='_blank').flex-item Home
-						a.flex-item About
-						a.flex-item.now  Blog
-						a.flex-item Contact
-			when 'Contact': a(href='/',targer='_blank').flex-item Home
-						a.flex-item About
-						a.flex-item Blog
-						a.flex-item.now  Contact
+		.visible-sm.menu-control
+			a.menu-button(href='#')
+				span.menu-bar
+				span.menu-bar
+				span.menu-bar
+			ul.dropdown-menu
+				li.menu-item 
+					a(href='/') Home
+				li.menu-item 
+					a(href='/about') About
+				li.menu-item 
+					a(href='/blog') Blog
+		.header-right.invisible-sm
+			case now
+				when 'Home': a(href='/',targer='_blank').flex-item.now Home  
+							a(href='/about',targer='_blank').flex-item About
+							a(href='/blog',targer='_blank').flex-item Blog
+				when 'About': a(href='/',targer='_blank').flex-item Home
+							a(href='/about',targer='_blank').flex-item.now About
+							a(href='/blog',targer='_blank').flex-item Blog
+				when 'Blog': a(href='/',targer='_blank').flex-item Home
+							a(href='/about',targer='_blank').flex-item About
+							a(href='/blog',targer='_blank').flex-item.now  Blog
+				//- when 'Contact': a(href='/',targer='_blank').flex-item Home
+				//- 			a.flex-item About
+				//- 			a.flex-item Blog
+				//- 			a.flex-item.now  Contact
+				when 'Logout': a(href='/xinyu/blog/create',target='_blank').flex-item new One
+							a(href='/logout').flex-item.now Logout

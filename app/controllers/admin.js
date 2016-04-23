@@ -1,17 +1,19 @@
 var Blog = require('../models/blog')
 var _ = require('underscore')
+var User = require('../models/user')
 
-exports.index = function(req, res) {
-    Blog.find({}, function(err, content) {
-        if (err) {
-            console.log(err);
-        }
-        res.render('adminIndex', {
-            content: content,
-            now: ''
-        });
-    })
-}
+// exports.index = function(req, res) {
+//     Blog.find({}, function(err, content) {
+//         if (err) {
+//             console.log(err);
+//         }
+//         res.render('adminIndex', {
+//             title:'Admin Index Page',
+//             content: content,
+//             now: 'Logout',
+//         });
+//     })
+// }
 
 exports.List = function(req, res) {
     Blog.find({}, function(err, allArticle) {
@@ -19,13 +21,15 @@ exports.List = function(req, res) {
             console.log(err);
         }
         res.render('adminList', {
+            title: 'Admin List Page',
             items: allArticle,
-            now: ''
+            now: 'Logout'
         });
     })
 }
 exports.create = function(req, res) {
     res.render('adminForm', {
+        title: 'Admin Form Page',
         blog: {
             title: '',
             summary: '',
@@ -45,6 +49,7 @@ exports.update = function(req, res) {
                 console.log('Error happens');
             }
             res.render('adminForm', {
+                title: 'Admin Form Page',
                 blog: BlogDoc,
             })
         })
@@ -97,5 +102,24 @@ exports.delete = function(req, res) {
             }
             console.log('Delete done');
         })
+    }
+}
+exports.adminRequired = function(req, res, next) {
+    var _user = req.session.user
+    if (_user) {
+        var name = _user.name
+        User.find({ name: name }, function(err, userObj) {
+            if (err) {
+                console.log(err);
+            }
+            if (!userObj) {
+                console.log('No admin !');
+                return res.redirect('/')
+            }
+            next()
+        })
+    } else {
+        console.log('No admin in session !');
+        return res.redirect('/')
     }
 }

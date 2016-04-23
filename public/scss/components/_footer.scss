@@ -1,64 +1,53 @@
-@font-face {
-    font-family: 'FontAwesome';
-    font-weight: normal;
-    font-style: normal;
-    src: url('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0');
-    src: url('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0') format('embedded-opentype'), url('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0') format('woff2'), url('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0') format('woff'), url('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0') format('truetype'), url('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular') format('svg');
-}
-
+@import '../includes/icons';
+@import '../includes/icon-names';
 .footer {
-    height: 150px;
-    background: hsla(356, 19%, 83%, 0.23);
+    background: $bg-grey;
     .footer-container {
         margin: 0 auto;
-        width: $common_width;
-        @include display-flex(flex);
-        @include justify-content(space-between);
-        h3 {
-            font-weight: lighter;
-            padding: 12px 0 0 40px;
-            font-size: 22px;
-            line-height: 40px;
-            color: #000;
-            margin-bottom: 0px;
+        display:flex;
+        justify-content:space-between;
+        flex-wrap:wrap;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        .footer-left {
+            h3 {
+                font-weight: lighter;
+                font-size: 22px;
+                color: $black;
+                margin-bottom: 0px;
+            }
+            p {
+                font-size: 19px;
+                color: #A0969E;
+                margin-bottom: 1.6rem;
+            }
         }
-        p {
-            font-size: 19px;
-            color: #A0969E;
-            line-height: 30px;
-            padding-left: 40px;
-            margin-top: 10px;
-        }
-        a.icon {
-            display: inline-block;
-            font: normal normal normal 14px/1 FontAwesome;
-            font-size: inherit;
-            text-rendering: auto;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            color: rgba(60, 51, 58, 0.44);
-            padding: 60px 12px 0px;
-            font-size: 32px;
-            cursor: pointer;
-            @include transition(all 0.3s);
-            &:last-child {
-                padding-right: 20px;
+        .footer-right{
+            a.icon {
+                display: inline-block;
+                font: normal normal normal 14px/1 FontAwesome;
+                font-size: inherit;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                color: rgba(60, 51, 58, 0.44);
+                margin-top: 48px;
+                margin-right: 1rem;
+                padding-bottom: 1rem;
+                font-size: 2rem;
+                cursor: pointer;
+                transition:all 0.3s;
+                &:last-child {
+                    padding-right: 20px;
+                }
+                &:hover {
+                    color: #000;
+                }
             }
-            &:hover {
-                color: #000;
-            }
-            &.icon-github:before {
-                content: '\f092';
-            }
-            &.icon-wechat:before {
-                content: '\f1d7';
-            }
-            &.icon-mail:before {
-                content: '\f0e1';
-            }
-            &.icon-qq:before {
-                content: '\f1d6';
-            }
+            @include icon(icon-github,$fa-var-github);
+            @include icon(icon-wechat,$fa-var-wechat);
+            @include icon(icon-mail,$fa-var-mail-forward);
+            @include icon(icon-qq,$fa-var-qq);
         }
     }
 }

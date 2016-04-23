@@ -12,14 +12,17 @@ var path = {
     css: './public/css',
     nodemon: {
         script: 'app.js',
-    }
+    },
+    js:'./public/js/*.js'
 }
 
 gulp.task('compass', function() {
-    gulp.src(path.scss)
-        // .pipe(plugins.watch(path.scss))
-        .pipe(plugins.compass(path.compass))
-        .pipe(gulp.dest(path.css))
+    gulp.watch(path.scss,function(){
+        gulp.src(path.scss)
+            // .pipe(plugins.watch(path.scss))
+            .pipe(plugins.compass(path.compass))
+            .pipe(gulp.dest(path.css))
+    })
 });
 
 var nodemonConfig = {
@@ -36,3 +39,12 @@ gulp.task('nodemon', function() {
 gulp.task('develop', ['nodemon'],function(){
     gulp.watch(path.scss,['compass']);
 })
+gulp.task('jshint', function () {
+    gulp.src(path.js)
+        .pipe(plugins.jshint())
+        .pipe(plugins.jshint.reporter('default'));
+});
+gulp.task('watch',function(){
+    gulp.watch(path.js,['jshint'])
+})
+gulp.task('default',['compass','watch'])

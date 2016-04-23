@@ -18,16 +18,16 @@ body {
 }
 
 a {
-    color: #0645ad;
+    color: $link-color;
     text-decoration: none;
     &:visited {
-        color: #0b0080;
+        color: $link-visited-color;
     }
     &:hover {
-        color: #06e;
+        color: $link-hover-color;
     }
     &:active {
-        color: #faa700;
+        color: $link-active-color;
     }
     &:focus {
         outline: thin dotted;

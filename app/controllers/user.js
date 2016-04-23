@@ -2,6 +2,12 @@ var Blog = require('../models/blog')
 var User = require('../models/user')
 
 exports.index = function(req, res) {
+    console.log(req.session.user)
+    res.render('index', {
+        now: 'Home'
+    })
+}
+exports.getAllBlogs = function(req, res) {
         // fs.readFile('./md/xinyu.md', 'utf-8', function(err, md_content) {
         //     if (err) res.send(err);
         //     html_content = markdown.toHTML(md_content)
@@ -18,9 +24,10 @@ exports.index = function(req, res) {
             if (err) {
                 console.log('Error happens');
             }
-            res.render('index', {
+            res.render('allBlogs', {
+                title: 'Xinuy Blog',
                 items: allArticle,
-                now: 'Home'
+                now: 'Blog'
             });
         })
     }
@@ -31,33 +38,44 @@ exports.getOneBlog = function(req, res) {
             console.log('Error happens');
         }
         res.render('article', {
+            title: 'Xinyu Blog -- ' + articleDoc.title,
             item: articleDoc,
             now: 'Blog'
         });
     })
 }
 exports.getTag = function(req, res) {
-        var tag = req.params.tag
-        if (tag) {
-            Blog.findByTag(tag, function(err, tagDoc) {
-                if (err) {
-                    console.log('Error happens');
-                }
-                res.render('tag', {
-                    items: tagDoc,
-                    now: 'Blog',
-                    tag: tag
-                })
+    var tag = req.params.tag
+    if (tag) {
+        Blog.findByTag(tag, function(err, tagDoc) {
+            if (err) {
+                console.log('Error happens');
+            }
+            res.render('tag', {
+                title: 'Xinyu Blog -- ' + tag,
+                items: tagDoc,
+                now: 'Blog',
+                tag: tag
             })
-        }
+        })
+    }
+}
+exports.aboutPage = function(req, res) {
+        res.render('about', {
+            now: 'About'
+        })
     }
     // join page
 exports.signUpPage = function(req, res) {
-        res.render('signup')
+        res.render('signup', {
+            title: 'Xinyu Blog -- Signup'
+        })
     }
     // login page
 exports.logInPage = function(req, res) {
-    res.render('login')
+    res.render('login', {
+        title: 'Xinyu Blog -- Login'
+    })
 }
 exports.signUp = function(req, res) {
     var userObj = req.body.user
@@ -96,3 +114,7 @@ exports.logIn = function(req, res) {
     // exports.adminRequired=function(req,res,next){
     //     var 
     // }
+    exports.logout = function(req,res){
+        delete req.session.user
+        return res.redirect('/')
+    }

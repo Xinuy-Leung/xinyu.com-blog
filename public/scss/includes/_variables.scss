@@ -1,0 +1,92 @@
+//== Colors
+$text-color: $light-black;
+$bg-color: $bg-black;
+$light-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+
+//== Typography
+//Font, line-height, and color for body text, headings, and more.
+$font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-monospace:  Monaco, Consolas, "Courier New", monospace;
+$font-family-serif:      Georgia, "Times New Roman", Times, serif;
+
+$font-size-base:16px;
+$font-size-huge: $font-size-base * 2;
+$font-size-large: $font-size-base * 1.25;
+$font-size-medium: 16px * 0.875;
+$font-size-small: 12px * 0.875;
+$font-size-h1:    2.5em;
+$font-size-h2:    2em;
+$font-size-h3:    1.5em;
+$font-size-h4:    1.2em;
+$font-size-h5:    1em;
+$font-size-h6:    0.9em; // 14px
+
+//== line-height
+$line-height-base: 1.428571429; // 20/14
+
+//== Icons
+$fa-font-path:       "../fonts";
+$fa-font-size-base:   14px;
+$fa-css-prefix:       fa;
+$fa-version:          "4.3.0";
+
+//== Media queries breakpoints
+// --------------------------------------------------
+// iphone6
+$screen-sm: 414px;
+// Small screen / tablet
+$screen-md: 768px;
+// Medium screen / desktop
+// $screen-md: 992px;
+// $screen-md-min: $screen-sm-max +1;
+// $screen-desktop: $screen-md-min;
+// Large screen / wide desktop
+$screen-lg: 1200px;
+$screen-lg-max:$screen-lg;
+// So media queries don't overlap when required, provide a maximum
+
+//= Grid system
+// --------------------------------------------------
+// Padding, to be divided by two and applied to the left and right of all columns
+$grid-gutter-width: 30px;
+//= Container sizes
+// Small screen / tablet
+$container-tablet: ((720px + $grid-gutter-width));
+$container-md: $container-tablet;
+// Medium screen / desktop
+// $container-desktop: ((940px + $grid-gutter-width));
+// $container-md: $container-desktop;
+// Large screen / wide desktop
+$container-large-desktop: ((1000px + $grid-gutter-width));
+$container-lg: $container-large-desktop;
+
+//== Components
+//
+// Define common padding and border radius sizes and more.
+// Values based on 14px text and 1.428 line-height (~20px to start).
+$padding-xs-vertical: 1px;
+$padding-xs-horizontal: 5px;
+
+$padding-small-vertical: 5px;
+$padding-small-horizontal: 10px;
+
+$padding-base-vertical: 6px;
+$padding-base-horizontal: 12px;
+
+$padding-large-vertical: 10px;
+$padding-large-horizontal: 16px;
+
+$padding-huge-vertical: 14px;
+$padding-huge-horizontal: 20px;
+
+$padding-container-vertical: 30px;
+$padding-container-horizontal: $padding-container-vertical + ($grid-gutter-width / 2);
+
+$border-radius-base: 4px;
+$border-radius-large: 6px;
+$border-radius-small: 3px;
+$border-radius-huge: 10px;
+$border-radius-circle: 100%;
+
+$margin-sm-horizontal:1.5rem;
+$margin-md-horizontal:2.5rem;

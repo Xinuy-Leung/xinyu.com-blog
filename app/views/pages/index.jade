@@ -2,10 +2,10 @@ extends ../layout
 include ../includes/util
 
 block headFile
-	link(rel='stylesheet',type='text/css',href='/css/index.css')
-
+	//- link(rel='stylesheet',type='text/css',href='/css/index.css')
+	script(src='/js/bundle.js')
+		
 block content
 	main.main
 		.main-container
-			each item in items
-				+post(item)
+			h1 xinyu 's Index page

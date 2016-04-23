@@ -1,0 +1,63 @@
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('#{$fa-font-path}/fontawesome-webfont.eot');
+	src: url('#{$fa-font-path}/fontawesome-webfont.eot') format('embedded-opentype'),
+	url('#{$fa-font-path}/fontawesome-webfont.woff2') format('woff2'),
+	url('#{$fa-font-path}/fontawesome-webfont.woff') format('woff'),
+	url('#{$fa-font-path}/fontawesome-webfont.ttf') format('truetype'),
+	url('#{$fa-font-path}/fontawesome-webfont.svg#fontawesomeregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@mixin fa(){
+	font-family: FontAwesome;
+	font-size: inherit; 
+  	text-rendering: auto; // optimizelegibility throws things off #1094
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+  	transform: translate(0, 0); // ensures no half-pixel rendering in firefox
+  }
+  @mixin fa-icon($size, $padding, $background, $foreground : white) {
+    @include fa();
+    background-color: $background;
+    color: $foreground;
+    border-radius: $border-radius-circle;
+    width: $size;
+    height: $size;
+    padding: $padding;
+    text-align: center;
+    line-height: $size;
+    font-size: $size - $padding;
+  }
+  @mixin icon($name, $content) {
+    .#{$name}::before{
+      content:$content;
+    }      
+  }
+
+  @mixin set-li-icon($li-name, $content) {
+    .#{li-name} {
+      padding-left: $padding-base-horizontal + $font-size-base;
+    }
+    .#{li-name}::before {
+      @include fa();
+      content: $content;
+      width: $padding-base-horizontal + $font-size-base;
+      margin-left: -$padding-base-horizontal - $font-size-base;
+      display: inline-block;
+    }
+  }
+
+  @mixin set-small-li-icon($li-name, $content) {
+    .#{li-name} {
+      padding-left: $padding-small-horizontal + $font-size-small;
+    }
+    .#{li-name}::before {
+      @include fa();
+      content: $content;
+      width: $padding-xs-horizontal + $font-size-small;
+      margin-left: -$padding-xs-horizontal - $font-size-small;
+      display: inline-block;
+    }
+  }

@@ -1,0 +1,11 @@
+extends ../layout
+include ../includes/util
+
+block headFile
+	link(rel='stylesheet',type='text/css',href='/css/index.css')
+
+block content
+	main.main
+		.main-container
+			each item in items
+				+post(item)

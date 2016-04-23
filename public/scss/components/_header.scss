@@ -1,43 +1,103 @@
-// @import '../includes/normalize';
-@import '../includes/markdown';
-@import 'compass/css3';
+@import '../includes/color';
+@import '../includes/variables';
+@import '../includes/global';
+
 
 body {
-    // font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
-    @include display-flex(flex);
-    @include flex-direction(column);
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
-}
- 
-$common_width:1000px;
+} 
 .header-container {
     width: 100%;
-    height: 80px;
+    height: 64px;
+    box-shadow: $light-shadow;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
     .header {
-        width: $common_width;
         margin: 0 auto;
-        position: relative;
-        @include display-flex(flex);
-        @include justify-content(flex-end);
+        .menu-control{
+            float: right;
+            margin-top: 15px;
+            color: #fff;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+            display: none;
+            a{
+                .menu-bar{
+                    display: block;
+                    width: 25px;
+                    height: 3px;
+                    margin-top: 6px;
+                    background-color: rgba(68, 68, 68, 0.54);
+                    border-radius: 3px;
+                }
+            }
+            .dropdown-menu{
+                display: none;                    
+                position: absolute;
+                top: 97%;
+                right: 1px;
+                z-index: 1000;
+                min-width: 80px;
+                padding: 5px 0;
+                margin: 2px 0 0;
+                list-style: none;
+                border: 1px solid rgba(0,0,0,.15);
+                border-radius: 3px;
+                box-shadow: 0 6px 12px rgba(0,0,0,.175);
+                color: $black;
+                &.show{
+                    display: block;
+                }
+                .menu-item{
+                    a{
+                        display: block;
+                        padding: 3px 20px;
+                        clear: both;
+                        font-weight: 400;
+                        line-height: 1.5;
+                        color: #333;
+                        white-space: nowrap;
+                        &:hover,&:focus{
+                            text-decoration: none;
+                            outline: 0;
+                            background-color: rgba(34, 34, 34, 0.11);
+                        }
+                    }
+                }
+            }
+        }
+        .header-right{
+            float: right;
+            display: flex;
+            justify-content:flex-end;
+            align-items:center;
+        }
         .flex-item {
-            margin: 0 20px;
-            line-height: 95px;
-            color: #A0969E;
+            margin: 0 1rem;
+            line-height: 64px;
+            color: $light-grey;
             cursor: pointer;
-            @include transition(all 0.3s);
+            transition:all 3s;
+            &:hover{
+                color: $grey;
+            }
+            &:focus {
+                outline: thin dotted;
+            }
             &:hover,
-            &.now {
-                color: #000;
+            &:active {
+                outline: 0;
             }
         }
         .flex-logo {
-            img {
-                width: 99px;
-                height: 63px;
-                position: absolute;
-                top: 7px;
-                left: 40px;
-            }
+            float: left;
+            color: $light-grey;
+            cursor: pointer;
+            width: 99px;
+            height: 64px;
         }
     }
 }

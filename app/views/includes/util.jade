@@ -5,11 +5,11 @@ mixin post(item)
 				h1.post-title #{item.title}
 			div.post-meta 
 				span.post-time  发布于 
-					a(href='/',targer='_blank') #{moment(item.meta.createAt).startOf('minute').fromNow()}
+					a(href='/',targer='_blank') #{moment(item.meta.createAt).calendar()}
 				span.update-time   &nbsp | &nbsp 最后编辑于 
-					a(href='/',targer='_blank') #{moment(item.meta.updateAt).startOf('minute').fromNow()}
-				span.post-category &nbsp | &nbsp 归类于
-					a(href='/',targer='_blank') #{item.category}
+					a(href='/',targer='_blank') #{moment(item.meta.updateAt).calendar()}
+				//- span.post-category &nbsp | &nbsp 归类于
+				//- 	a(href='/',targer='_blank') #{item.category}
 				span.tags  &nbsp | &nbsp 标签:
 					each it in item.tags 
 						a(href='/tag/#{it}',targer='_blank') &nbsp  #{it}
@@ -25,9 +25,9 @@ mixin adminPost(item)
 			a.operation.del(data-id='#{item._id}') &nbsp | &nbsp 删除
 			div.post-meta 
 				span.post-time  发布于 
-					a(href='/',targer='_blank') #{moment(item.meta.createAt).startOf('minute').fromNow()}
+					a(href='/',targer='_blank') #{moment(item.meta.createAt).calendar()}
 				span.update-time   &nbsp | &nbsp 最后编辑于 
-					a(href='/',targer='_blank') #{moment(item.meta.updateAt).startOf('minute').fromNow()}
+					a(href='/',targer='_blank') #{moment(item.meta.updateAt).calendar()}
 				span.post-category &nbsp | &nbsp 归类于
 					a(href='/',targer='_blank') #{item.category}
 				span.tags  &nbsp | &nbsp 标签:
@@ -40,13 +40,13 @@ mixin adminPost(item)
 mixin articlePost(item)
 	article.article-item
 		.article-container
-			a(href='/p/#{item._id}')
-				h1.post-title #{item.title}
+			//- a(href='/p/#{item._id}')
+			h1.post-title #{item.title}
 			div.post-meta 
 				span.post-time  发布于 
-					a(href='/',targer='_blank') #{moment(item.meta.createAt).startOf('minute').fromNow()}
+					a(href='/',targer='_blank') #{moment(item.meta.createAt).calendar()}
 				span.update-time   &nbsp | &nbsp 最后编辑于 
-					a(href='/',targer='_blank') #{moment(item.meta.updateAt).startOf('minute').fromNow()}
+					a(href='/',targer='_blank') #{moment(item.meta.updateAt).calendar()}
 				span.post-category &nbsp | &nbsp 归类于
 					a(href='/',targer='_blank') #{item.category}
 				span.tags  &nbsp | &nbsp 标签:

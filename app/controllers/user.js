@@ -103,7 +103,7 @@ exports.logIn = function(req, res) {
                 if (isMatch) {
                     req.session.user = userObj
                     console.log('password is matched');
-                    res.redirect('/')
+                    res.redirect('/xinyu')
                 } else {
                     console.log('password is not matched');
                     res.redirect('/login')

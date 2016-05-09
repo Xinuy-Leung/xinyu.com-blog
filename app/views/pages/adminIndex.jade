@@ -2,7 +2,7 @@ extends ../layout
 include ../includes/util
 
 block headFile
-	link(href='//cdn.bootcss.com/bootstrap/4.0.0-alpha.2/css/bootstrap.css',rel='stylesheet')
+	link(rel='stylesheet',type='text/css',href='/css/bootstrap.min.css')
 	link(rel='stylesheet',type='text/css',href='/css/admin.css')
 	script(src='/js/admin.js')
 
@@ -10,6 +10,6 @@ block content
 	main.main
 		.main-container
 			.page-header
-				h1 Admin Index Page
+				h1 后台文章管理
 			each item in content
 				+adminPost(item)

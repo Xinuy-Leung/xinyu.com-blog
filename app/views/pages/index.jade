@@ -2,10 +2,51 @@ extends ../layout
 include ../includes/util
 
 block headFile
-	//- link(rel='stylesheet',type='text/css',href='/css/index.css')
-	script(src='/js/bundle.js')
+	link(rel='stylesheet',type='text/css',href='/css/index.css')
+	//- script(src='/js/bundle.js')
 		
 block content
 	main.main
 		.main-container
-			h1 xinyu 's Index page
+			.banner-img
+				img(src='images/big-sunset.jpg')
+			section.section-article
+				h2 Javascript 
+					span.arrow-down
+				.grey-line
+				.flex-article-container
+					.flex-article
+						a(href='/p/5721c8da3155f9d7289332fb') 
+							h3 Node.js模块接口的设计模式
+						p.
+							当你在 Node 中require一个模块时，你从返回的结果中得到了什么？当你编写一个 Node 模块时，在设计模块的接口时你有哪些选择？
+							<br>
+							当我有第一次学着在Node工作时，我发现了有相当多能把事情做得极致的方法。Javascript 是非常灵活的，以至于社区里为开源项目贡献代码的开发者们都有着不一样的编码风格。
+							<br>
+							在我使用Node的历程中，我始终密切关注着优雅的Node实践方法，并且尝试着我个人和团队的工作里采用这些方法。
+							<br>
+							在这篇文章中，我将会分享我在Node模块系统中的发现，以及一些封装和分享代码的方法。我的目标是辨识和阐述出那些对模块接口设计有用的模式，从而帮助你们明白如何在适当的时候使用它们...
+					.flex-article
+						a(href='/p/5721c8da3155f9d7289332fb') 
+							h3 Javascript语言的历史
+						p.
+							1.JavaScript的诞生<br>
+							JavaScript因为互联网而生，紧随着浏览器的出现而问世。回顾它的历史，就要从浏览器的历史讲起。<br>
+							1990年底，欧洲核能研究组织（CERN）科学家Tim Berners-Lee，在全世界最大的电脑网络——互联网的基础上，发明了万维网（World Wide Web），从此可以在网上浏览网页文件。最早的网页只能在操作系统的终端里浏览，也就是说只能使用命令行操作，网页都是在字符窗口中显示，这当然非常不方便。<br>
+							1992年底，美国国家超级电脑应用中心（NCSA）开始开发一个独立的浏览器，叫做Mosaic。这是人类历史上第一个浏览器...
+			section.section-article
+				h2 CSS 
+					span.arrow-down
+				.grey-line
+				.flex-article-container
+					.flex-article
+						a(href='/p/572e20ba3155f9d7289332fd') 
+								h3 Sass 基础指南
+						p.
+							要想开始编写Sass代码，你就先得创建相应的文件。Sass 有两种后缀名文件：一种后缀名为 .sass，不使用大括号和分号；另一种就是我们这里使用的 Scss 文件，这种和我们平时写的 CSS 文件格式差不多，使用大括号和分号。<br>本文中所说的所有 Sass 文件都指后缀名为 .scss 的文件。在此也建议使用后缀名为 .scss 的文件，以避免 .sass 后缀名的严格格式要求报错...
+					.flex-article
+						a(href='/p/572e228b3155f9d7289332fe') 
+								h3 Compass用法
+						p.
+							Sass是一种"CSS预处理器"，可以让CSS的开发变得简单和可维护。但是，只有搭配Compass，它才能显出真正的威力。 本文介绍Compass的用法。毫不夸张地说，学会了Compass，你的CSS开发效率会上一个台阶。<br>
+							Sass本身只是一个编译器，Compass在它的基础上，封装了一系列有用的模块和模板，补充Sass的功能。它们之间的关系，有点像Javascript和jQuery、Ruby和Rails、python和Django的关系。...

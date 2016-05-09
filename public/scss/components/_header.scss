@@ -16,6 +16,7 @@ body {
     top: 0;
     left: 0;
     z-index: 99;
+    background: #fff;
     .header {
         margin: 0 auto;
         .menu-control{
@@ -48,6 +49,7 @@ body {
                 border-radius: 3px;
                 box-shadow: 0 6px 12px rgba(0,0,0,.175);
                 color: $black;
+                background: #fff;
                 &.show{
                     display: block;
                 }

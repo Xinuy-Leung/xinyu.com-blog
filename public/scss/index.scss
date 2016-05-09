@@ -2,3 +2,39 @@
 @import './components/main';
 @import './components/footer'; 
 @import './includes/responsive';
+@import './includes/icons';
+@import './includes/icon-names';
+.main-container{
+	.banner-img{
+		width: 80%;
+		margin: 20px auto;
+	}
+	.section-article{
+		@include icon(arrow-down,$fa-var-angle-down);
+		margin-bottom: 30px;
+		h2{
+			span{
+				font: normal normal normal 25px/1 FontAwesome;
+			}
+		}
+		.grey-line{
+			width: 140px;
+			border-bottom: 2px solid #777;
+		}
+		.flex-article-container{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			.flex-article{
+				flex:0 0 450px;
+			}
+		}
+	}
+	.about-page{
+		margin: 10px auto 30px;
+		width: 85%;
+		h3{
+			text-align: center;
+		}
+	}
+}
